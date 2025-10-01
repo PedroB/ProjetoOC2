@@ -1,0 +1,5 @@
+#####################################################################
+# Input: inputs/prefetching_100_pages_and_sequentially_read_all_bytes.txt
+# Left side: expected (outputs/tlbsim-l1/prefetching_100_pages_and_sequentially_read_all_bytes.out)
+# Right side: actual (reports/prefetching_100_pages_and_sequentially_read_all_bytes.out)
+#####################################################################

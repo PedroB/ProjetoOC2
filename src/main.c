@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
   log_dbg("Total pages:           %" PRIu64, TOTAL_PAGES);
   log_dbg("=========================================");
 
-  if (argc < 2) {   
+  if (argc < 2) {
     panic("Usage: %s <instructions_file>", argv[0]);
   }
 

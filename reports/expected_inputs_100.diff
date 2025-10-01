@@ -1,0 +1,5 @@
+#####################################################################
+# Input: inputs/expected_inputs_100.txt
+# Left side: expected (outputs/tlbsim-l1/expected_inputs_100.out)
+# Right side: actual (reports/expected_inputs_100.out)
+#####################################################################

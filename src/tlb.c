@@ -48,43 +48,109 @@ void tlb_init() {
   tlb_l2_invalidations = 0;
 }
 
+// Helper function to find a TLB entry by virtual page number
+static int tlb_l1_find_entry(va_t virtual_page_number) {
+  for (int i = 0; i < TLB_L1_SIZE; i++) {
+    if (tlb_l1[i].valid && tlb_l1[i].virtual_page_number == virtual_page_number) {
+      return i;
+    }
+  }
+  return -1; // Not found
+}
+
+static int tlb_l2_find_entry(va_t virtual_page_number) {
+  for (int i = 0; i < TLB_L2_SIZE; i++) {
+    if (tlb_l2[i].valid && tlb_l2[i].virtual_page_number == virtual_page_number) {
+      return i;
+    }
+  }
+  return -1; // Not found
+}
+
+// Helper function to find LRU entry for replacement
+static int tlb_l1_find_lru_entry() {
+  int lru_index = 0;
+  uint64_t oldest_time = tlb_l1[0].last_access;
+  
+  for (int i = 1; i < TLB_L1_SIZE; i++) {
+    if (!tlb_l1[i].valid) {
+      return i; // Found an invalid (empty) entry
+    }
+    if (tlb_l1[i].last_access < oldest_time) {
+      oldest_time = tlb_l1[i].last_access;
+      lru_index = i;
+    }
+  }
+  return lru_index;
+}
+
 void tlb_invalidate(va_t virtual_page_number) {
-  (void)(virtual_page_number);  // Suppress unused variable warning. You can
-                                // delete this when implementing the actual
-                                // function.
-  // TODO: implement TLB entry invalidation.
+  // Add L1 TLB latency for invalidation operation
+  increment_time(TLB_L1_LATENCY_NS);
+  
+  // Invalidate entry in L1 TLB
+  int index = tlb_l1_find_entry(virtual_page_number);
+  if (index != -1) {
+    tlb_l1[index].valid = false;
+    tlb_l1_invalidations++;
+  }
+  // Invalidate entry in L2 TLB
+  index = tlb_l2_find_entry(virtual_page_number);
+  if (index != -1) {
+    tlb_l2[index].valid = false;
+    tlb_l2_invalidations++;
+  }
+  
+  // TODO: Also invalidate in L2 TLB when implemented
 }
 
 pa_dram_t tlb_translate(va_t virtual_address, op_t op) {
+  // Extract virtual page number and offset
   virtual_address &= VIRTUAL_ADDRESS_MASK;
-  const va_t vpn = vpn_of(virtual_address);
-  const uint64_t off = offset_of(virtual_address);
-  // Check L1 TLB
-  int i1 = tlb_find(tlb_l1, TLB_L1_SIZE, vpn);
-  increment_time(TLB_L1_LATENCY_NS);  // custo do acesso ao L1 (hit ou miss)
-  if (i1 >= 0) {
-    // L1 hit
+  va_t virtual_page_number = (virtual_address >> PAGE_SIZE_BITS) & PAGE_INDEX_MASK;
+  va_t virtual_page_offset = virtual_address & PAGE_OFFSET_MASK;
+  
+  // Add L1 TLB latency first
+  increment_time(TLB_L1_LATENCY_NS);
+  
+  // Check L1 TLB first
+  int l1_index = tlb_l1_find_entry(virtual_page_number);
+  
+  if (l1_index != -1) {
+    // L1 TLB hit
     tlb_l1_hits++;
-    tlb_l1[i1].last_access = get_time();
-    if (op == OP_WRITE) tlb_l1[i1].dirty = true;
-    return make_pa(tlb_l1[i1].physical_page_number, off);
+    tlb_l1[l1_index].last_access = get_time();
+    
+    // Update dirty bit if this is a write operation
+    if (op == OP_WRITE) {
+      tlb_l1[l1_index].dirty = true;
+    }
+    
+    // Return physical address
+    return (tlb_l1[l1_index].physical_page_number << PAGE_SIZE_BITS) | virtual_page_offset;
   }
-  // L1 miss
+  
+  // L1 TLB miss - need to check page table
   tlb_l1_misses++;
-  // Check L2 TLB
-  int i2 = tlb_find(tlb_l2, TLB_L2_SIZE, vpn);
-  increment_time(TLB_L2_LATENCY_NS);  // custo do acesso ao L2 (hit ou miss)
-  if (i2 >= 0) {
-    // L2 hit
-    tlb_l2_hits++;    
-    tlb_l2[i2].last_access = get_time();
-    if (op == OP_WRITE) tlb_l2[i2].dirty = true;
-    // Promote to L1
-    tlb_entry_t entry = tlb_l2[i2];
-    tlb_insert(tlb_l1, TLB_L1_SIZE, entry);
-    return make_pa(entry.physical_page_number, off);
+  
+  // Get translation from page table (this handles page faults if needed)
+  pa_dram_t physical_address = page_table_translate(virtual_address, op);
+  pa_dram_t physical_page_number = physical_address >> PAGE_SIZE_BITS;
+  
+  // Find entry to replace in L1 TLB
+  int replace_index = tlb_l1_find_lru_entry();
+  
+  // Write back dirty entry if needed
+  if (tlb_l1[replace_index].valid && tlb_l1[replace_index].dirty) {
+    write_back_tlb_entry(tlb_l1[replace_index].physical_page_number << PAGE_SIZE_BITS);
   }
-  // L2 miss
-  tlb_l2_misses++;
-  return page_table_translate(virtual_address, op);
+  
+  // Update L1 TLB entry
+  tlb_l1[replace_index].valid = true;
+  tlb_l1[replace_index].virtual_page_number = virtual_page_number;
+  tlb_l1[replace_index].physical_page_number = physical_page_number;
+  tlb_l1[replace_index].dirty = (op == OP_WRITE);
+  tlb_l1[replace_index].last_access = get_time();
+  
+  return physical_address;
 }

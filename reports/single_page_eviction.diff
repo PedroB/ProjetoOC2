@@ -1,0 +1,5 @@
+#####################################################################
+# Input: inputs/single_page_eviction.txt
+# Left side: expected (outputs/tlbsim-l1/single_page_eviction.out)
+# Right side: actual (reports/single_page_eviction.out)
+#####################################################################

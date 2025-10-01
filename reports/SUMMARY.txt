@@ -1,0 +1,10 @@
+✅ PASS  expected_inputs_100
+✅ PASS  page_striding_32
+✅ PASS  prefetching_100_pages_and_sequentially_read_all_bytes
+✅ PASS  random_100
+❌ FAIL  single_page_eviction_to_disk  (see reports/single_page_eviction_to_disk.diff)
+✅ PASS  single_page_eviction
+✅ PASS  working_set_32_pages
+❌ FAIL  working_set_64_pages  (see reports/working_set_64_pages.diff)
+--------------------------------------------------------
+Total: 8 | Passed: 6 | Failed: 2
