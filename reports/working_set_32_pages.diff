@@ -1,5 +1,5 @@
 #####################################################################
 # Input: inputs/working_set_32_pages.txt
-# Left side: expected (outputs/tlbsim-l1/working_set_32_pages.out)
+# Left side: expected (outputs/tlbsim-l2/working_set_32_pages.out)
 # Right side: actual (reports/working_set_32_pages.out)
 #####################################################################

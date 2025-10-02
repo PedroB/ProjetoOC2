@@ -1,5 +1,5 @@
 #####################################################################
 # Input: inputs/page_striding_32.txt
-# Left side: expected (outputs/tlbsim-l1/page_striding_32.out)
+# Left side: expected (outputs/tlbsim-l2/page_striding_32.out)
 # Right side: actual (reports/page_striding_32.out)
 #####################################################################

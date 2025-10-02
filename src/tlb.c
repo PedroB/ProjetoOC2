@@ -84,6 +84,22 @@ static int tlb_l1_find_lru_entry() {
   return lru_index;
 }
 
+static int tlb_l2_find_lru_entry() {
+  int lru_index = 0;
+  uint64_t oldest_time = tlb_l2[0].last_access;
+  
+  for (int i = 1; i < TLB_L2_SIZE; i++) {
+    if (!tlb_l2[i].valid) {
+      return i; // Found an invalid (empty) entry
+    }
+    if (tlb_l2[i].last_access < oldest_time) {
+      oldest_time = tlb_l2[i].last_access;
+      lru_index = i;
+    }
+  }
+  return lru_index;
+}
+
 void tlb_invalidate(va_t virtual_page_number) {
   // Add L1 TLB latency for invalidation operation
   increment_time(TLB_L1_LATENCY_NS);
@@ -101,7 +117,6 @@ void tlb_invalidate(va_t virtual_page_number) {
     tlb_l2_invalidations++;
   }
   
-  // TODO: Also invalidate in L2 TLB when implemented
 }
 
 pa_dram_t tlb_translate(va_t virtual_address, op_t op) {
@@ -132,25 +147,62 @@ pa_dram_t tlb_translate(va_t virtual_address, op_t op) {
   
   // L1 TLB miss - need to check page table
   tlb_l1_misses++;
-  
-  // Get translation from page table (this handles page faults if needed)
-  pa_dram_t physical_address = page_table_translate(virtual_address, op);
-  pa_dram_t physical_page_number = physical_address >> PAGE_SIZE_BITS;
-  
-  // Find entry to replace in L1 TLB
-  int replace_index = tlb_l1_find_lru_entry();
-  
-  // Write back dirty entry if needed
-  if (tlb_l1[replace_index].valid && tlb_l1[replace_index].dirty) {
-    write_back_tlb_entry(tlb_l1[replace_index].physical_page_number << PAGE_SIZE_BITS);
+
+  increment_time(TLB_L2_LATENCY_NS);
+  int l2_index = tlb_l2_find_entry(virtual_page_number);
+
+  if (l2_index != -1) {
+    // L2 TLB hit
+    tlb_l2_hits++;
+    tlb_l2[l2_index].last_access = get_time();
+    
+    // Update dirty bit if this is a write operation
+    if (op == OP_WRITE) {
+      tlb_l2[l2_index].dirty = true;
+    }
+    
+    // Promote entry to L1 TLB
+    int replace_index = tlb_l1_find_lru_entry();
+    
+    // Write back dirty entry if needed
+    if (tlb_l1[replace_index].valid && tlb_l1[replace_index].dirty) {
+      write_back_tlb_entry(tlb_l1[replace_index].physical_page_number << PAGE_SIZE_BITS);
+    }
+    
+    // Update L1 TLB entry
+    tlb_l1[replace_index].valid = true;
+    tlb_l1[replace_index].virtual_page_number = virtual_page_number;
+    tlb_l1[replace_index].physical_page_number = tlb_l2[l2_index].physical_page_number;
+    tlb_l1[replace_index].dirty = (op == OP_WRITE) || tlb_l2[l2_index].dirty;
+    tlb_l1[replace_index].last_access = get_time();
+    
+    return (tlb_l2[l2_index].physical_page_number << PAGE_SIZE_BITS) | virtual_page_offset;
   }
   
-  // Update L1 TLB entry
-  tlb_l1[replace_index].valid = true;
-  tlb_l1[replace_index].virtual_page_number = virtual_page_number;
-  tlb_l1[replace_index].physical_page_number = physical_page_number;
-  tlb_l1[replace_index].dirty = (op == OP_WRITE);
-  tlb_l1[replace_index].last_access = get_time();
+    pa_dram_t pa = page_table_translate(virtual_address, op);
+    pa_dram_t ppn = pa >> PAGE_SIZE_BITS;
+
+    // Mete no L2 (inclusivo)
+    int v2 = tlb_l2_find_lru_entry();
+    if (tlb_l2[v2].valid && tlb_l2[v2].dirty) {
+        write_back_tlb_entry(tlb_l2[v2].physical_page_number << PAGE_SIZE_BITS);
+    }
+    tlb_l2[v2].valid = true;
+    tlb_l2[v2].virtual_page_number = virtual_page_number;
+    tlb_l2[v2].physical_page_number = ppn;
+    tlb_l2[v2].dirty = (op == OP_WRITE);
+    tlb_l2[v2].last_access = get_time();
+
+    // Mete no L1 também
+    int v1 = tlb_l1_find_lru_entry();
+    if (tlb_l1[v1].valid && tlb_l1[v1].dirty) {
+        write_back_tlb_entry(tlb_l1[v1].physical_page_number << PAGE_SIZE_BITS);
+    }
+    tlb_l1[v1].valid = true;
+    tlb_l1[v1].virtual_page_number = virtual_page_number;
+    tlb_l1[v1].physical_page_number = ppn;
+    tlb_l1[v1].dirty = (op == OP_WRITE);
+    tlb_l1[v1].last_access = get_time();
   
-  return physical_address;
+    return pa;
 }
