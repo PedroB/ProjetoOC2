@@ -179,30 +179,32 @@ pa_dram_t tlb_translate(va_t virtual_address, op_t op) {
     return (tlb_l2[l2_index].physical_page_number << PAGE_SIZE_BITS) | virtual_page_offset;
   }
   
-    pa_dram_t pa = page_table_translate(virtual_address, op);
-    pa_dram_t ppn = pa >> PAGE_SIZE_BITS;
+  tlb_l2_misses++;
 
-    // Mete no L2 (inclusivo)
-    int v2 = tlb_l2_find_lru_entry();
-    if (tlb_l2[v2].valid && tlb_l2[v2].dirty) {
-        write_back_tlb_entry(tlb_l2[v2].physical_page_number << PAGE_SIZE_BITS);
-    }
-    tlb_l2[v2].valid = true;
-    tlb_l2[v2].virtual_page_number = virtual_page_number;
-    tlb_l2[v2].physical_page_number = ppn;
-    tlb_l2[v2].dirty = (op == OP_WRITE);
-    tlb_l2[v2].last_access = get_time();
+  pa_dram_t pa = page_table_translate(virtual_address, op);
+  pa_dram_t ppn = pa >> PAGE_SIZE_BITS;
 
-    // Mete no L1 também
-    int v1 = tlb_l1_find_lru_entry();
-    if (tlb_l1[v1].valid && tlb_l1[v1].dirty) {
-        write_back_tlb_entry(tlb_l1[v1].physical_page_number << PAGE_SIZE_BITS);
-    }
-    tlb_l1[v1].valid = true;
-    tlb_l1[v1].virtual_page_number = virtual_page_number;
-    tlb_l1[v1].physical_page_number = ppn;
-    tlb_l1[v1].dirty = (op == OP_WRITE);
-    tlb_l1[v1].last_access = get_time();
-  
-    return pa;
+  // Mete no L2 (inclusivo)
+  int v2 = tlb_l2_find_lru_entry();
+  if (tlb_l2[v2].valid && tlb_l2[v2].dirty) {
+      write_back_tlb_entry(tlb_l2[v2].physical_page_number << PAGE_SIZE_BITS);
+  }
+  tlb_l2[v2].valid = true;
+  tlb_l2[v2].virtual_page_number = virtual_page_number;
+  tlb_l2[v2].physical_page_number = ppn;
+  tlb_l2[v2].dirty = (op == OP_WRITE);
+  tlb_l2[v2].last_access = get_time();
+
+  // Mete no L1 também
+  int v1 = tlb_l1_find_lru_entry();
+  if (tlb_l1[v1].valid && tlb_l1[v1].dirty) {
+      write_back_tlb_entry(tlb_l1[v1].physical_page_number << PAGE_SIZE_BITS);
+  }
+  tlb_l1[v1].valid = true;
+  tlb_l1[v1].virtual_page_number = virtual_page_number;
+  tlb_l1[v1].physical_page_number = ppn;
+  tlb_l1[v1].dirty = (op == OP_WRITE);
+  tlb_l1[v1].last_access = get_time();
+
+  return pa;
 }

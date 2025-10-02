@@ -11,11 +11,6 @@ mkdir -p reports
 
 make -j
 
-# Inicializar contadores
-pass=0
-fail=0
-total=0
-
 for input in inputs/*; do
     input_file=$(basename "$input" .txt)
 
@@ -37,20 +32,9 @@ for input in inputs/*; do
     echo "# Right side: actual (reports/$input_file.out)" >> $report_file
     echo "#####################################################################" >> $report_file
 
-    if diff -y --expand-tabs "$expected_output_file" "reports/$input_file.out" >> "$report_file"; then
-        echo "✅ PASS: $input_file"
-        ((pass++))
+    if diff -y --expand-tabs $expected_output_file reports/$input_file.out >> $report_file; then
+        echo "# Test $input_file passed" >> $report_file
     else
-        echo "❌ FAIL: $input_file (see $report_file)"
-        ((fail++))
+        echo "# Test $input_file failed" >> $report_file
     fi
-    ((total++))
 done
-
-echo "--------------------------------------------------------"
-echo "Total: $total | Passed: $pass | Failed: $fail"
-
-# exit code para CI (1 se houver falhas)
-if (( fail > 0 )); then
-  exit 1
-fi

@@ -11009,6 +11009,6 @@ Total instructions executed: 10000
 Total page faults: 64
 Total page evictions: 0
 Total TLB L1 hits: 9016 (90.16%)
-Total TLB L2 hits: 920 (100.00%)
+Total TLB L2 hits: 920 (93.50%)
 Total TLB L1 invalidations: 0
 Total TLB L2 invalidations: 0
