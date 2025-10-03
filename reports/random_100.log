@@ -173,375 +173,343 @@ PTE found (VA=4ec6ec31 VPN=4ec6e PA=20c31)
 ***** Page fault! *****
 [3299] W DRAM[0]
 PTE found (VA=8c803958 VPN=8c803 PA=21958)
-[3399] W DRAM[1000]
-[3499] W DRAM[21958]
+[3399] W DRAM[21958]
 * R 6f14a08a
 ***** Page fault! *****
-[3502] W DRAM[0]
+[3402] W DRAM[0]
 PTE found (VA=6f14a08a VPN=6f14a PA=2208a)
-[3602] W DRAM[2000]
-[3702] R DRAM[2208a]
+[3502] R DRAM[2208a]
 * R 12ecab8d
 ***** Page fault! *****
-[3705] W DRAM[0]
+[3505] W DRAM[0]
 PTE found (VA=12ecab8d VPN=12eca PA=23b8d)
-[3805] R DRAM[23b8d]
+[3605] R DRAM[23b8d]
 * W 5027ae85
 ***** Page fault! *****
-[3808] W DRAM[0]
+[3608] W DRAM[0]
 PTE found (VA=5027ae85 VPN=5027a PA=24e85)
-[3908] W DRAM[4000]
-[4008] W DRAM[24e85]
+[3708] W DRAM[24e85]
 * R ceffc8ab
 ***** Page fault! *****
-[4011] W DRAM[0]
+[3711] W DRAM[0]
 PTE found (VA=ceffc8ab VPN=ceffc PA=258ab)
-[4111] W DRAM[5000]
-[4211] R DRAM[258ab]
+[3811] R DRAM[258ab]
 * R d1ff35ba
 ***** Page fault! *****
-[4214] W DRAM[0]
+[3814] W DRAM[0]
 PTE found (VA=d1ff35ba VPN=d1ff3 PA=265ba)
-[4314] W DRAM[6000]
-[4414] R DRAM[265ba]
+[3914] R DRAM[265ba]
 * W 4c5b526d
 ***** Page fault! *****
-[4417] W DRAM[0]
+[3917] W DRAM[0]
 PTE found (VA=4c5b526d VPN=4c5b5 PA=2726d)
-[4517] W DRAM[7000]
-[4617] W DRAM[2726d]
+[4017] W DRAM[2726d]
 * R c48bcba5
 ***** Page fault! *****
-[4620] W DRAM[0]
+[4020] W DRAM[0]
 PTE found (VA=c48bcba5 VPN=c48bc PA=28ba5)
-[4720] R DRAM[28ba5]
+[4120] R DRAM[28ba5]
 * W 24320e09
 ***** Page fault! *****
-[4723] W DRAM[0]
+[4123] W DRAM[0]
 PTE found (VA=24320e09 VPN=24320 PA=29e09)
-[4823] W DRAM[29e09]
+[4223] W DRAM[29e09]
 * W 73798d5e
 ***** Page fault! *****
-[4826] W DRAM[0]
+[4226] W DRAM[0]
 PTE found (VA=73798d5e VPN=73798 PA=2ad5e)
-[4926] W DRAM[a000]
-[5026] W DRAM[2ad5e]
+[4326] W DRAM[2ad5e]
 * R 12e0bca2
 ***** Page fault! *****
-[5029] W DRAM[0]
+[4329] W DRAM[0]
 PTE found (VA=12e0bca2 VPN=12e0b PA=2bca2)
-[5129] R DRAM[2bca2]
+[4429] R DRAM[2bca2]
 * W 793a1302
 ***** Page fault! *****
-[5132] W DRAM[0]
+[4432] W DRAM[0]
 PTE found (VA=793a1302 VPN=793a1 PA=2c302)
-[5232] W DRAM[c000]
-[5332] W DRAM[2c302]
+[4532] W DRAM[2c302]
 * W 7ab8e086
 ***** Page fault! *****
-[5335] W DRAM[0]
+[4535] W DRAM[0]
 PTE found (VA=7ab8e086 VPN=7ab8e PA=2d086)
-[5435] W DRAM[d000]
-[5535] W DRAM[2d086]
+[4635] W DRAM[2d086]
 * R 9e62d192
 ***** Page fault! *****
-[5538] W DRAM[0]
+[4638] W DRAM[0]
 PTE found (VA=9e62d192 VPN=9e62d PA=2e192)
-[5638] R DRAM[2e192]
+[4738] R DRAM[2e192]
 * R f034f894
 ***** Page fault! *****
-[5641] W DRAM[0]
+[4741] W DRAM[0]
 PTE found (VA=f034f894 VPN=f034f PA=2f894)
-[5741] W DRAM[f000]
-[5841] R DRAM[2f894]
+[4841] R DRAM[2f894]
 * R dce609d5
 ***** Page fault! *****
-[5844] W DRAM[0]
+[4844] W DRAM[0]
 PTE found (VA=dce609d5 VPN=dce60 PA=309d5)
-[5944] W DRAM[10000]
-[6044] R DRAM[309d5]
+[4944] R DRAM[309d5]
 * R b7824bf9
 ***** Page fault! *****
-[6047] W DRAM[0]
+[4947] W DRAM[0]
 PTE found (VA=b7824bf9 VPN=b7824 PA=31bf9)
-[6147] R DRAM[31bf9]
+[5047] R DRAM[31bf9]
 * R c9506fda
 ***** Page fault! *****
-[6150] W DRAM[0]
+[5050] W DRAM[0]
 PTE found (VA=c9506fda VPN=c9506 PA=32fda)
-[6250] R DRAM[32fda]
+[5150] R DRAM[32fda]
 * R bcb0518b
 ***** Page fault! *****
-[6253] W DRAM[0]
+[5153] W DRAM[0]
 PTE found (VA=bcb0518b VPN=bcb05 PA=3318b)
-[6353] R DRAM[3318b]
+[5253] R DRAM[3318b]
 * W c1e2d33f
 ***** Page fault! *****
-[6356] W DRAM[0]
+[5256] W DRAM[0]
 PTE found (VA=c1e2d33f VPN=c1e2d PA=3433f)
-[6456] W DRAM[14000]
-[6556] W DRAM[3433f]
+[5356] W DRAM[3433f]
 * W 6367e03
 ***** Page fault! *****
-[6559] W DRAM[0]
+[5359] W DRAM[0]
 PTE found (VA=6367e03 VPN=6367 PA=35e03)
-[6659] W DRAM[15000]
-[6759] W DRAM[35e03]
+[5459] W DRAM[35e03]
 * R 4f2501b2
 ***** Page fault! *****
-[6762] W DRAM[0]
+[5462] W DRAM[0]
 PTE found (VA=4f2501b2 VPN=4f250 PA=361b2)
-[6862] R DRAM[361b2]
+[5562] R DRAM[361b2]
 * R 7015821f
 ***** Page fault! *****
-[6865] W DRAM[0]
+[5565] W DRAM[0]
 PTE found (VA=7015821f VPN=70158 PA=3721f)
-[6965] W DRAM[17000]
-[7065] R DRAM[3721f]
+[5665] R DRAM[3721f]
 * R 8d2da092
 ***** Page fault! *****
-[7068] W DRAM[0]
+[5668] W DRAM[0]
 PTE found (VA=8d2da092 VPN=8d2da PA=38092)
-[7168] W DRAM[18000]
-[7268] R DRAM[38092]
+[5768] R DRAM[38092]
 * W 1a2eb51d
 ***** Page fault! *****
-[7271] W DRAM[0]
+[5771] W DRAM[0]
 PTE found (VA=1a2eb51d VPN=1a2eb PA=3951d)
-[7371] W DRAM[19000]
-[7471] W DRAM[3951d]
+[5871] W DRAM[3951d]
 * R 9dee3473
 ***** Page fault! *****
-[7474] W DRAM[0]
+[5874] W DRAM[0]
 PTE found (VA=9dee3473 VPN=9dee3 PA=3a473)
-[7574] W DRAM[1a000]
-[7674] R DRAM[3a473]
+[5974] R DRAM[3a473]
 * W cbbc75c0
 ***** Page fault! *****
-[7677] W DRAM[0]
+[5977] W DRAM[0]
 PTE found (VA=cbbc75c0 VPN=cbbc7 PA=3b5c0)
-[7777] W DRAM[1b000]
-[7877] W DRAM[3b5c0]
+[6077] W DRAM[3b5c0]
 * R 23adba62
 ***** Page fault! *****
-[7880] W DRAM[0]
+[6080] W DRAM[0]
 PTE found (VA=23adba62 VPN=23adb PA=3ca62)
-[7980] R DRAM[3ca62]
+[6180] R DRAM[3ca62]
 * W 232b5370
 ***** Page fault! *****
-[7983] W DRAM[0]
+[6183] W DRAM[0]
 PTE found (VA=232b5370 VPN=232b5 PA=3d370)
-[8083] W DRAM[3d370]
+[6283] W DRAM[3d370]
 * R 2f470278
 ***** Page fault! *****
-[8086] W DRAM[0]
+[6286] W DRAM[0]
 PTE found (VA=2f470278 VPN=2f470 PA=3e278)
-[8186] R DRAM[3e278]
+[6386] R DRAM[3e278]
 * R e5e5e6aa
 ***** Page fault! *****
-[8189] W DRAM[0]
+[6389] W DRAM[0]
 PTE found (VA=e5e5e6aa VPN=e5e5e PA=3f6aa)
-[8289] R DRAM[3f6aa]
+[6489] R DRAM[3f6aa]
 * R aac85a40
 ***** Page fault! *****
-[8292] W DRAM[0]
+[6492] W DRAM[0]
 PTE found (VA=aac85a40 VPN=aac85 PA=40a40)
-[8392] R DRAM[40a40]
+[6592] R DRAM[40a40]
 * R a6e69fd2
 ***** Page fault! *****
-[8395] W DRAM[0]
+[6595] W DRAM[0]
 PTE found (VA=a6e69fd2 VPN=a6e69 PA=41fd2)
-[8495] W DRAM[21000]
-[8595] R DRAM[41fd2]
+[6695] R DRAM[41fd2]
 * W a76e851e
 ***** Page fault! *****
-[8598] W DRAM[0]
+[6698] W DRAM[0]
 PTE found (VA=a76e851e VPN=a76e8 PA=4251e)
-[8698] W DRAM[4251e]
+[6798] W DRAM[4251e]
 * W 6666ddd7
 ***** Page fault! *****
-[8701] W DRAM[0]
+[6801] W DRAM[0]
 PTE found (VA=6666ddd7 VPN=6666d PA=43dd7)
-[8801] W DRAM[43dd7]
+[6901] W DRAM[43dd7]
 * R 4e46d53d
 ***** Page fault! *****
-[8804] W DRAM[0]
+[6904] W DRAM[0]
 PTE found (VA=4e46d53d VPN=4e46d PA=4453d)
-[8904] W DRAM[24000]
-[9004] R DRAM[4453d]
+[7004] R DRAM[4453d]
 * R ad66e153
 ***** Page fault! *****
-[9007] W DRAM[0]
+[7007] W DRAM[0]
 PTE found (VA=ad66e153 VPN=ad66e PA=45153)
-[9107] R DRAM[45153]
+[7107] R DRAM[45153]
 * W 2c6ab58f
 ***** Page fault! *****
-[9110] W DRAM[0]
+[7110] W DRAM[0]
 PTE found (VA=2c6ab58f VPN=2c6ab PA=4658f)
-[9210] W DRAM[4658f]
+[7210] W DRAM[4658f]
 * R 497be693
 ***** Page fault! *****
-[9213] W DRAM[0]
+[7213] W DRAM[0]
 PTE found (VA=497be693 VPN=497be PA=47693)
-[9313] W DRAM[27000]
-[9413] R DRAM[47693]
+[7313] R DRAM[47693]
 * R e923b67a
 ***** Page fault! *****
-[9416] W DRAM[0]
+[7316] W DRAM[0]
 PTE found (VA=e923b67a VPN=e923b PA=4867a)
-[9516] R DRAM[4867a]
+[7416] R DRAM[4867a]
 * R 490d30a5
 ***** Page fault! *****
-[9519] W DRAM[0]
+[7419] W DRAM[0]
 PTE found (VA=490d30a5 VPN=490d3 PA=490a5)
-[9619] W DRAM[29000]
-[9719] R DRAM[490a5]
+[7519] R DRAM[490a5]
 * R 2e8bf9cd
 ***** Page fault! *****
-[9722] W DRAM[0]
+[7522] W DRAM[0]
 PTE found (VA=2e8bf9cd VPN=2e8bf PA=4a9cd)
-[9822] W DRAM[2a000]
-[9922] R DRAM[4a9cd]
+[7622] R DRAM[4a9cd]
 * R 269e73e3
 ***** Page fault! *****
-[9925] W DRAM[0]
+[7625] W DRAM[0]
 PTE found (VA=269e73e3 VPN=269e7 PA=4b3e3)
-[10025] R DRAM[4b3e3]
+[7725] R DRAM[4b3e3]
 * W d1794f0e
 ***** Page fault! *****
-[10028] W DRAM[0]
+[7728] W DRAM[0]
 PTE found (VA=d1794f0e VPN=d1794 PA=4cf0e)
-[10128] W DRAM[2c000]
-[10228] W DRAM[4cf0e]
+[7828] W DRAM[4cf0e]
 * W 441e5bbc
 ***** Page fault! *****
-[10231] W DRAM[0]
+[7831] W DRAM[0]
 PTE found (VA=441e5bbc VPN=441e5 PA=4dbbc)
-[10331] W DRAM[2d000]
-[10431] W DRAM[4dbbc]
+[7931] W DRAM[4dbbc]
 * W ffd19167
 ***** Page fault! *****
-[10434] W DRAM[0]
+[7934] W DRAM[0]
 PTE found (VA=ffd19167 VPN=ffd19 PA=4e167)
-[10534] W DRAM[4e167]
+[8034] W DRAM[4e167]
 * R a1acf93e
 ***** Page fault! *****
-[10537] W DRAM[0]
+[8037] W DRAM[0]
 PTE found (VA=a1acf93e VPN=a1acf PA=4f93e)
-[10637] R DRAM[4f93e]
+[8137] R DRAM[4f93e]
 * W c85e1be5
 ***** Page fault! *****
-[10640] W DRAM[0]
+[8140] W DRAM[0]
 PTE found (VA=c85e1be5 VPN=c85e1 PA=50be5)
-[10740] W DRAM[50be5]
+[8240] W DRAM[50be5]
 * W f9e8cb41
 ***** Page fault! *****
-[10743] W DRAM[0]
+[8243] W DRAM[0]
 PTE found (VA=f9e8cb41 VPN=f9e8c PA=51b41)
-[10843] W DRAM[51b41]
+[8343] W DRAM[51b41]
 * R 14ee705e
 ***** Page fault! *****
-[10846] W DRAM[0]
+[8346] W DRAM[0]
 PTE found (VA=14ee705e VPN=14ee7 PA=5205e)
-[10946] R DRAM[5205e]
+[8446] R DRAM[5205e]
 * R c7fa6004
 ***** Page fault! *****
-[10949] W DRAM[0]
+[8449] W DRAM[0]
 PTE found (VA=c7fa6004 VPN=c7fa6 PA=53004)
-[11049] R DRAM[53004]
+[8549] R DRAM[53004]
 * R b23e7aea
 ***** Page fault! *****
-[11052] W DRAM[0]
+[8552] W DRAM[0]
 PTE found (VA=b23e7aea VPN=b23e7 PA=54aea)
-[11152] W DRAM[34000]
-[11252] R DRAM[54aea]
+[8652] R DRAM[54aea]
 * W 32f4db42
 ***** Page fault! *****
-[11255] W DRAM[0]
+[8655] W DRAM[0]
 PTE found (VA=32f4db42 VPN=32f4d PA=55b42)
-[11355] W DRAM[35000]
-[11455] W DRAM[55b42]
+[8755] W DRAM[55b42]
 * W 3fad5dfd
 ***** Page fault! *****
-[11458] W DRAM[0]
+[8758] W DRAM[0]
 PTE found (VA=3fad5dfd VPN=3fad5 PA=56dfd)
-[11558] W DRAM[56dfd]
+[8858] W DRAM[56dfd]
 * R 7bb622eb
 ***** Page fault! *****
-[11561] W DRAM[0]
+[8861] W DRAM[0]
 PTE found (VA=7bb622eb VPN=7bb62 PA=572eb)
-[11661] R DRAM[572eb]
+[8961] R DRAM[572eb]
 * R 3336c04d
 ***** Page fault! *****
-[11664] W DRAM[0]
+[8964] W DRAM[0]
 PTE found (VA=3336c04d VPN=3336c PA=5804d)
-[11764] R DRAM[5804d]
+[9064] R DRAM[5804d]
 * W 37f696e
 ***** Page fault! *****
-[11767] W DRAM[0]
+[9067] W DRAM[0]
 PTE found (VA=37f696e VPN=37f6 PA=5996e)
-[11867] W DRAM[39000]
-[11967] W DRAM[5996e]
+[9167] W DRAM[5996e]
 * W 8258743d
 ***** Page fault! *****
-[11970] W DRAM[0]
+[9170] W DRAM[0]
 PTE found (VA=8258743d VPN=82587 PA=5a43d)
-[12070] W DRAM[5a43d]
+[9270] W DRAM[5a43d]
 * R a00795f6
 ***** Page fault! *****
-[12073] W DRAM[0]
+[9273] W DRAM[0]
 PTE found (VA=a00795f6 VPN=a0079 PA=5b5f6)
-[12173] W DRAM[3b000]
-[12273] R DRAM[5b5f6]
+[9373] R DRAM[5b5f6]
 * W 4c151501
 ***** Page fault! *****
-[12276] W DRAM[0]
+[9376] W DRAM[0]
 PTE found (VA=4c151501 VPN=4c151 PA=5c501)
-[12376] W DRAM[5c501]
+[9476] W DRAM[5c501]
 * R eac948c8
 ***** Page fault! *****
-[12379] W DRAM[0]
+[9479] W DRAM[0]
 PTE found (VA=eac948c8 VPN=eac94 PA=5d8c8)
-[12479] W DRAM[3d000]
-[12579] R DRAM[5d8c8]
+[9579] R DRAM[5d8c8]
 * R aa55d715
 ***** Page fault! *****
-[12582] W DRAM[0]
+[9582] W DRAM[0]
 PTE found (VA=aa55d715 VPN=aa55d PA=5e715)
-[12682] R DRAM[5e715]
+[9682] R DRAM[5e715]
 * R 6102b446
 ***** Page fault! *****
-[12685] W DRAM[0]
+[9685] W DRAM[0]
 PTE found (VA=6102b446 VPN=6102b PA=5f446)
-[12785] R DRAM[5f446]
+[9785] R DRAM[5f446]
 * R d5d92838
 ***** Page fault! *****
-[12788] W DRAM[0]
+[9788] W DRAM[0]
 PTE found (VA=d5d92838 VPN=d5d92 PA=60838)
-[12888] R DRAM[60838]
+[9888] R DRAM[60838]
 * W dc630408
 ***** Page fault! *****
-[12891] W DRAM[0]
+[9891] W DRAM[0]
 PTE found (VA=dc630408 VPN=dc630 PA=61408)
-[12991] W DRAM[61408]
+[9991] W DRAM[61408]
 * W 4103dddb
 ***** Page fault! *****
-[12994] W DRAM[0]
+[9994] W DRAM[0]
 PTE found (VA=4103dddb VPN=4103d PA=62ddb)
-[13094] W DRAM[42000]
-[13194] W DRAM[62ddb]
+[10094] W DRAM[62ddb]
 * R b42a5a52
 ***** Page fault! *****
-[13197] W DRAM[0]
+[10097] W DRAM[0]
 PTE found (VA=b42a5a52 VPN=b42a5 PA=63a52)
-[13297] W DRAM[43000]
-[13397] R DRAM[63a52]
+[10197] R DRAM[63a52]
 * W 2a3730cc
 ***** Page fault! *****
-[13400] W DRAM[0]
+[10200] W DRAM[0]
 PTE found (VA=2a3730cc VPN=2a373 PA=640cc)
-[13500] W DRAM[640cc]
-Elapsed: 13500 ns
+[10300] W DRAM[640cc]
+Elapsed: 10300 ns
 Total instructions executed: 100
 Total page faults: 100
 Total page evictions: 0
