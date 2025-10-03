@@ -200,6 +200,15 @@ pa_dram_t tlb_translate(va_t virtual_address, op_t op) {
   if (tlb_l2[v2].valid) {
     // Because L2 is inclusive, invalidate L1 copy if it exists
     tlb_l1_invalidate_by_vpn(tlb_l2[v2].virtual_page_number);
+
+    if (tlb_l2[v2].dirty) {
+      pa_dram_t evicted_pa = (tlb_l2[v2].physical_page_number << PAGE_SIZE_BITS);
+
+      // write-back da página suja
+      write_back_tlb_entry(evicted_pa);
+
+      tlb_l2[v2].dirty = false;
+    }
   }
 
   tlb_l2[v2].valid = true;
